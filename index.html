@@ -13,6 +13,15 @@
       const root = ReactDOM.createRoot(container);
 
       function MyButton({ text, onClick, counter }) {
+        const disabled =
+          text !== "Reset!"
+            ? counter > 9 || counter < 0
+              ? true
+              : false
+            : counter > 9 || counter < 0
+            ? false
+            : true;
+
         const myStyle = text !== "Reset!" ? {} : { margin: 20, display: "block" };
 
         return (
@@ -23,6 +32,9 @@
       }
 
       function MyCounter({ counter }) {
+        if (counter > 9 || counter < 0) {
+          counter = "done!";
+        }
         return <span style={{ margin: 20 }}>{counter}</span>;
       }
 
